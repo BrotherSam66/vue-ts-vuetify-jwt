@@ -1,4 +1,4 @@
-# vue-jwt-base-code
+# vue2-ts-vuetify
 
 ## Project setup
 ```
