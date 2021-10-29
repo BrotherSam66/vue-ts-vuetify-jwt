@@ -34,14 +34,33 @@
     </v-app-bar>
     <v-main>
       main
-      <hr />
-      swipper
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      swipper
+
+      <v-carousel
+        hide-delimiters
+        cycle
+        interval="4000"
+        height="130"
+        hide-delimiter-background
+        show-arrows-on-hover
+      >
+        <v-carousel-item
+          max-height="260"
+          max-width="640"
+          v-for="(item, i) in items"
+          :key="i"
+          :src="item.src"
+          reverse-transition="fade-transition"
+          transition="fade-transition"
+        ></v-carousel-item>
+        <!-- <v-carousel-item v-for="(slide, i) in slides" :key="i">
+          <v-sheet :color="colors[i]" height="100%">
+            <v-row class="fill-height" align="center" justify="center">
+              <div class="text-h2">{{ slide }} Slide</div>
+            </v-row>
+          </v-sheet>
+        </v-carousel-item> -->
+      </v-carousel>
+
       <hr />
       home
       <br />
@@ -87,7 +106,7 @@
     <About />
     <hr />
     <v-bottom-navigation v-model="bottomNav" color="primary" fixed="true">
-      <v-btn value="1">
+      <v-btn value="1" v-click-outside="click1">
         <span>主页</span>
         <v-icon>mdi-home</v-icon>
       </v-btn>
@@ -125,6 +144,31 @@ export default Vue.extend({
   },
   data: () => ({
     bottomNav: '3',
+    items: [
+      {
+        src: './imgs/adimgs/banner-0.jpg',
+      },
+      {
+        src: './imgs/adimgs/banner-1.jpg',
+      },
+      {
+        src: './imgs/adimgs/banner-2.jpg',
+      },
+      {
+        src: './imgs/adimgs/banner-3.jpg',
+      },
+      {
+        src: './imgs/adimgs/banner-4.jpg',
+      },
+      {
+        src: './imgs/adimgs/banner-5.jpg',
+      },
+    ],
   }),
+  methods: {
+    click1() {
+      console.log('你刚才click1了');
+    },
+  },
 });
 </script>
