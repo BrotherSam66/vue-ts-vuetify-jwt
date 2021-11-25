@@ -1,8 +1,5 @@
 <template>
-  <div>
-    HOME
-    <!-- <hello-world /> -->
-  </div>
+  <div>HOME</div>
 </template>
 
 <script lang="ts">
@@ -11,7 +8,14 @@ import Vue from 'vue';
 
 export default Vue.extend({
   name: 'Home',
-
+  data: () => ({
+    snackbar: false,
+    message: '',
+    vertical: true,
+    show1: false,
+    username: '',
+    password: '',
+  }),
   components: {
     // HelloWorld,
   },

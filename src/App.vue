@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <!-- 头部应用栏 -->
     <v-app-bar app color="primary" dark>
       <div class="d-flex align-center">
         <v-img
@@ -32,9 +33,10 @@
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
     </v-app-bar>
-    <v-main>
-      main
 
+    <!-- 主体部分 -->
+    <v-main>
+      <!-- 跑马灯 -->
       <v-carousel
         hide-delimiters
         cycle
@@ -61,52 +63,57 @@
         </v-carousel-item> -->
       </v-carousel>
 
-      <hr />
-      home
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-
+      <!-- 主路由 -->
       <router-view />
+
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+
       main
 
       <hr />
     </v-main>
 
     <hr />
+
+    <!-- 关于我们 -->
     <About />
     <hr />
+
+    <!-- 底部导航栏 -->
     <v-bottom-navigation v-model="bottomNav" color="primary" fixed="true">
-      <v-btn value="1" v-click-outside="click1">
+      <!-- <v-btn value="1" v-click-outside="click1"> -->
+      <v-btn value="1">
         <span>主页</span>
         <v-icon>mdi-home</v-icon>
       </v-btn>
