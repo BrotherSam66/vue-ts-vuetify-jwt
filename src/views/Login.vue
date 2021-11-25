@@ -54,14 +54,14 @@
         </v-flex>
       </v-layout>
     </v-container>
-    <!-- <v-snackbar v-model="snackbar" :vertical="vertical">
+    <v-snackbar v-model="snackbar" :vertical="vertical">
       {{ message }}
       <template v-slot:action="{ attrs }">
         <v-btn color="indigo" text v-bind="attrs" @click="snackbar = false">
           关闭
         </v-btn>
       </template>
-    </v-snackbar> -->
+    </v-snackbar>
   </div>
 </template>
 
@@ -71,6 +71,7 @@
 // import { md5 } from '@/utils/md5';
 // window.axios = require('axios');
 import { sha256 } from 'js-sha256';
+import { login } from '@/api/user';
 export default {
   data: () => ({
     snackbar: false, // 登录状态提醒
@@ -83,8 +84,26 @@ export default {
   }),
   methods: {
     submit(): void {
-      console.log('VUE_APP_BASE_API=' + process.env.VUE_APP_BASE_API);
-      console.log(sha256('1233445'));
+      // console.log('VUE_APP_BASE_API=' + process.env.VUE_APP_BASE_API);
+      // console.log(sha256('1233445'));
+      let that = this as any;
+      login({
+        password: sha256(this.password),
+        loginName: this.loginName,
+      }).then((res: any) => {
+        if (res.status == 1) {
+          this.showMsg('登录成功');
+          console.log('res.data.token === ', res.data.token);
+          var that = this as any;
+          setTimeout(function () {
+            that.$router.push('/login');
+          }, 2000);
+        } else {
+          // this.showMsg(res);
+          this.showMsg(res.message);
+        }
+      });
+
       // login({ password: md5(this.password), loginName: this.username }).then(
       //   (res) => {
       //     if (res.code == 200) {
@@ -103,10 +122,10 @@ export default {
       //   }
       // );
     },
-    // showMsg(msg) {
-    //   this.message = msg;
-    //   this.snackbar = true;
-    // },
+    showMsg(msg: string) {
+      this.message = msg;
+      this.snackbar = true;
+    },
   },
 };
 </script>

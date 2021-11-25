@@ -61,7 +61,7 @@ import { logon } from '@/api/user';
 import { sha256 } from 'js-sha256';
 
 // import { md5 } from '@/utils/md5';
-import SubmitLogon from '@/utils/submitLogon';
+// import SubmitLogon from '@/utils/submitLogon';
 export default Vue.extend({
   data: () => ({
     snackbar: false,
@@ -89,14 +89,15 @@ export default Vue.extend({
         password: sha256(this.password),
         loginName: this.loginName,
       }).then((res: any) => {
-        if (res.code == 200) {
+        if (res.status == 1) {
           this.showMsg('注册成功');
           var that = this as any;
           setTimeout(function () {
             that.$router.push('/login');
           }, 2000);
         } else {
-          this.showMsg(res.msg);
+          // this.showMsg(res);
+          this.showMsg(res.message);
         }
       });
     },
