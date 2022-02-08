@@ -28,7 +28,7 @@ service.interceptors.request.use(
   }
 );
 
-// response interceptor
+// response interceptor 返回数据执行到这里
 service.interceptors.response.use(
   /**
    * If you want to get http information such as headers or status
@@ -41,7 +41,7 @@ service.interceptors.response.use(
    * You can also judge the status by HTTP Status Code
    */
   (response) => {
-    console.log("response === ", response);
+    console.log("response.data === ", response.data);
     console.log(response.data.msg);
     return response.data;
   },

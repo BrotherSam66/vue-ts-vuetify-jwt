@@ -6,7 +6,7 @@ module.exports = {
     proxy: {
       // 配置跨域
       "/api": {
-        target: "http://localhost:5002/api", // 对应自己的接口
+        target: "http://localhost:5012/api", // 对应自己的接口
         ws: true,
         changOrigin: true,
         pathRewrite: {
